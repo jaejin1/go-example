@@ -1,5 +1,13 @@
 package ldap
 
+type User struct {
+	Username    string   `json:"ldap_username"`
+	Email       string   `json:"ldap_email"`
+	Realname    string   `json:"ldap_realname"`
+	DN          string   `json:"-"`
+	GroupDNList []string `json:"ldap_groupdn"`
+}
+
 type LdapConf struct {
 	URL               string `json:"ldap_url"`
 	SearchDn          string `json:"ldap_search_dn"`
