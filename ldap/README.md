@@ -44,7 +44,7 @@ func main() {
 	}
 	fmt.Println(ping)
 
-	users, err := ldapController.SearchUser(ctx, "", ldapConf, ldapGroupConf)
+	users, err := ldapController.SearchUser(ctx, "username", ldapConf, ldapGroupConf)
 	if err != nil {
 		fmt.Println(err)
 	}
