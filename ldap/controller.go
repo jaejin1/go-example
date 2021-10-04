@@ -7,6 +7,7 @@ import (
 type Controller interface {
 	Ping(ctx context.Context, cfg LdapConf) (bool, error)
 	SearchUser(ctx context.Context, username string, cfg *LdapConf, groupCfg *GroupConf) ([]User, error)
+	Session(ctx context.Context, cfg *LdapConf, groupCfg *GroupConf) (*Session, error)
 }
 
 type controller struct {
@@ -29,6 +30,14 @@ func (c *controller) Ping(ctx context.Context, cfg LdapConf) (bool, error) {
 
 func (c *controller) SearchUser(ctx context.Context, username string, cfg *LdapConf, groupCfg *GroupConf) ([]User, error) {
 	return c.service.SearchUser(ctx, NewSession(*cfg, *groupCfg), username)
+}
+
+func (c *controller) Session(ctx context.Context, cfg *LdapConf, groupCfg *GroupConf) (*Session, error) {
+	//cfg, groupCfg, err := c.ldapConfigs(ctx)
+	//if err != nil {
+	//	return nil, err
+	//}
+	return NewSession(*cfg, *groupCfg), nil
 }
 
 

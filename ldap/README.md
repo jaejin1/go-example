@@ -50,5 +50,13 @@ func main() {
 	}
 
 	fmt.Println(users)
+
+	userModel := ldap.AuthModel{
+		Principal: "example@xxx.xxx",
+		Password: "password",
+	}
+	user, err := ldap.Authenticate(ctx, userModel, ldapController, ldapConf, ldapGroupConf)
+	
+	fmt.Println(user)
 }
 ~~~

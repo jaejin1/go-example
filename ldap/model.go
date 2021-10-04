@@ -29,3 +29,11 @@ type GroupConf struct {
 	AdminDN             string `json:"ldap_group_admin_dn,omitempty"`
 	MembershipAttribute string `json:"ldap_group_membership_attribute,omitempty"`
 }
+
+
+// Auth
+
+type AuthModel struct {
+	Principal string
+	Password  string
+}
